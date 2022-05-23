@@ -8,25 +8,22 @@
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     @foreach($data as $key => $el)
-                        @if($key == 0)
-                        <div class="carousel-item active">
-                            <p>{{ $el->message }}</p>
-                        </div>
-                        @else
-                        <div class="carousel-item">
-                            <p>{{ $el->message }}</p>
-                        </div>
-                        @endif
+                    @if($key < 5)
+                    @if($key==0) <div class="carousel-item active">
+                        <p>{{ $el->message }}</p>
+                    </div>
+                    @else
+                    <div class="carousel-item">
+                        <p>{{ $el->message }}</p>
+                    </div>
+                    @endif
+                    @endif
                     @endforeach
                 </div>
                 <hr>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
                 </button>
             </div>
 
@@ -51,7 +48,7 @@
 
             <ul class="media-list" id="myList">
                 @foreach($data as $el)
-                <li class="media  border-bottom">
+                <li class="media border-bottom">
                     <div class="media-body">
                         <h4 class="media-heading">
                             {{ $el->author }}

@@ -1,6 +1,9 @@
 <?php
 
 use App\Models\Message;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home', ['data' => Message::all()]);
+    $data = Message::limit(3)->get();
+    return view('home', ['data' => $data]);
 });
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('message', [App\Http\Controllers\MessageController::class, 'sendMessage']);
-
+Route::get('message', [App\Http\Controllers\MessageController::class, 'getMessages']);
+Route::get('countMessages', [App\Http\Controllers\MessageController::class, 'getCountMessages']);

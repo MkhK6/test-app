@@ -6,12 +6,11 @@ ul#myList {
     padding: 0;
 }
 
-#myList li{display:none;
-}
 #loadMore {
-    color:rgb(85, 61, 61);
-    cursor:pointer;
+    color: rgb(85, 61, 61);
+    cursor: pointer;
 }
+
 #loadMore:hover {
-    color:black;
+    color: black;
 }
