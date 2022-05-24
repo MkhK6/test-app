@@ -6,6 +6,7 @@ use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\MessageRequest;
+use App\Http\Resources\MessageResource;
 
 class MessageController extends Controller
 {
@@ -20,7 +21,7 @@ class MessageController extends Controller
 
     public function getMessages(Request $request)
     {
-        $data = Message::offset($request->offset)->take(3)->get();
+        $data = MessageResource::collection(Message::offset($request->offset)->take(3)->get());
         return $data;
     }
 

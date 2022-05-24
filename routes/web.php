@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Resources\MessageResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $data = Message::limit(5)->get();
+    $data = MessageResource::collection(Message::limit(5)->get());
+    Log::alert(print_r($data, true));
     return view('home', ['data' => $data]);
 });
 
