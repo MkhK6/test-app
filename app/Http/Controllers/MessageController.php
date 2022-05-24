@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Http\Requests\MessageRequest;
 
 class MessageController extends Controller
 {
-    public function sendMessage(Request $request)
+    public function sendMessage(MessageRequest $request)
     {
         $flights = new Message();
         $flights->author = $request->author;
@@ -19,7 +20,6 @@ class MessageController extends Controller
 
     public function getMessages(Request $request)
     {
-        $count = Message::count();
         $data = Message::offset($request->offset)->take(3)->get();
         return $data;
     }

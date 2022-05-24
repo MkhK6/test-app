@@ -1,3 +1,4 @@
+var offset = 3;
 $(".send-message").click(function(event) {
     event.preventDefault();
     let message = $("input[name=message]").val();
@@ -13,7 +14,7 @@ $(".send-message").click(function(event) {
         success: function(response) {
             countData();
             $("#ajaxform")[0].reset();
-            $("#myList").append(
+            $("#myList").before(
                 '<li class="media border-bottom" style="display: list-item;"><div class="media-body"><p style="color: #0d6efd; margin:0">Новый комментарий</p><h4 class="media-heading">' +
                 response.author +
                 "</h4><p>" +
@@ -34,7 +35,6 @@ $(document).ready(function() {
     });
 });
 
-var offset = 3;
 $("#loadMore").on("click", function(e) {
     e.preventDefault();
     getData(offset);
@@ -54,9 +54,9 @@ function getData(offset) {
                 $("#myList").append(
                     '<li class="media border-bottom" style="display: list-item;"><div class="media-body"><h4 class="media-heading">' +
                     item.author +
-                    "</h4><p>" +
+                    '</h4><p>' +
                     item.message +
-                    "</p><div></li> "
+                    '</p><div></li>'
                 );
             });
         },

@@ -19,11 +19,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $data = Message::limit(3)->get();
+    $data = Message::limit(5)->get();
     return view('home', ['data' => $data]);
 });
 
 Auth::routes();
 Route::post('message', [App\Http\Controllers\MessageController::class, 'sendMessage']);
+
 Route::get('message', [App\Http\Controllers\MessageController::class, 'getMessages']);
 Route::get('countMessages', [App\Http\Controllers\MessageController::class, 'getCountMessages']);
