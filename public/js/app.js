@@ -11,6 +11,9 @@ $(".send-message").click(function(event) {
             message: message,
             author: author,
         },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
         success: function(response) {
             countData();
             $("#ajaxform")[0].reset();
