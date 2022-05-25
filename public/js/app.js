@@ -50,6 +50,7 @@ function getData(offset) {
             offset: offset,
         },
         success: function(response) {
+            console.log(response)
             response['data'].forEach(function(item, i, arr) {
                 $("#myList").append(
                     '<li class="media border-bottom" style="display: list-item;"><div class="media-body"><h4 class="media-heading">' +

@@ -21,12 +21,11 @@ use App\Http\Resources\MessageResource;
 
 Route::get('/', function () {
     $data = MessageResource::collection(Message::limit(5)->get());
-    Log::alert(print_r($data, true));
     return view('home', ['data' => $data]);
 });
 
 Auth::routes();
-Route::post('message', [App\Http\Controllers\MessageController::class, 'sendMessage']);
+Route::post('message', [App\Http\Controllers\MessageController::class, 'send']);
 
-Route::get('message', [App\Http\Controllers\MessageController::class, 'getMessages']);
-Route::get('countMessages', [App\Http\Controllers\MessageController::class, 'getCountMessages']);
+Route::get('message', [App\Http\Controllers\MessageController::class, 'get']);
+Route::get('countMessages', [App\Http\Controllers\MessageController::class, 'countMessages']);

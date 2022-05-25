@@ -12,6 +12,7 @@ class MessageRequest extends FormRequest
      *
      * @return bool
      */
+
     public function authorize()
     {
         return true;
@@ -25,15 +26,7 @@ class MessageRequest extends FormRequest
     public function rules()
     {
         return [
-            'message' => 'required|max:500',
+            'message' => 'required|max:500|min:3',
         ];
     }
-
-    // /**
-    //  * {@inheritdoc}
-    //  */
-    // protected function formatErrors(Validator $validator)
-    // {
-    //     return $validator->errors()->all();
-    // }
 }
